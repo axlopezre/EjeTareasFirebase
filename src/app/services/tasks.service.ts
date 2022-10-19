@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class TasksService {
   private tasks: string[] = [];
+  private compTask: string[] = [];
 
   constructor() {
     this.tasks.push("Tarea 1");
@@ -14,6 +15,9 @@ export class TasksService {
    public getTasks():string[] {
       return this.tasks;
    }
+   public getCompTask():string[] {
+      return this.compTask;
+   }
 
    public addTasks(task:string){
       this.tasks.push(task);
@@ -21,5 +25,10 @@ export class TasksService {
 
    public removeTask(pos:number){
       this.tasks.splice(pos, 1);
+   }
+   public completeTask(pos:number){
+      let taskslist = this.getTasks()
+      let deltask = taskslist[pos]
+      this.compTask.push(deltask)
    }
 }

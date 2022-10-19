@@ -31,4 +31,9 @@
                   <ion-icon name="trash-outline"></ion-icon>
               </ion-item-option>
           </ion-item-options>
+          <ion-item-options side="start" (ionSwipe) = "completeTask(i)">
+            <ion-item-option expandable color="success">
+                <ion-icon name="checkmark-outline"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
         </ion-item-sliding>
