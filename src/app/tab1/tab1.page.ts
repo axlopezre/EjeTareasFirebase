@@ -27,6 +27,7 @@ export class Tab1Page {
     this.taskService.removeTask(pos);
     this.tasks=this.taskService.getTasks();
   }
+  
   public completeTask(pos:number){
     this.taskService.completeTask(pos);
     this.tasks=this.taskService.getCompTask();
@@ -34,4 +35,5 @@ export class Tab1Page {
     this.taskService.removeTask(pos);
     this.tasks=this.taskService.getTasks();
  }
+
 }

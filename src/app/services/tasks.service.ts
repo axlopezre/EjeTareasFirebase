@@ -27,8 +27,8 @@ export class TasksService {
       this.tasks.splice(pos, 1);
    }
    public completeTask(pos:number){
-      let taskslist = this.getTasks()
-      let deltask = taskslist[pos]
-      this.compTask.push(deltask)
+      let taskslist = this.getTasks();
+      let deltask = taskslist[pos];
+      this.compTask.push(deltask);
    }
 }
