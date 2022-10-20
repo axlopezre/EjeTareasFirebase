@@ -31,4 +31,12 @@ export class TasksService {
       let deltask = taskslist[pos];
       this.compTask.push(deltask);
    }
+   public removeCompTask(pos:number){
+      this.compTask.splice(pos, 1);
+   }
+   public completeTask2(pos:number){
+      let taskslist = this.getCompTask();
+      let deltask = taskslist[pos];
+      this.tasks.push(deltask);
+   }
 }

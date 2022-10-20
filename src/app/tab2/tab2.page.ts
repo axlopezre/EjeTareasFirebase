@@ -8,12 +8,16 @@ import { TasksService } from '../services/tasks.service';
 })
 export class Tab2Page {
   public tasks: string[];
-  public task: string;
-  public compTask: string[];
 
  constructor(private taskService:TasksService) {
     this.tasks = this.taskService.getCompTask();
-    console.log(this.compTask)
-    this.task = "algo";
+  }
+
+  public addTask(pos:number){
+    this.taskService.completeTask2(pos);
+    this.tasks=this.taskService.getCompTask();
+    console.log(this.tasks);
+    this.taskService.removeCompTask(pos);
+    console.log(this.tasks);
   }
 }

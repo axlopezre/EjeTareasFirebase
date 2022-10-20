@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TasksService } from '../services/tasks.service';
+import { Input,ViewChild } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -10,11 +12,21 @@ export class Tab1Page {
   public tasks: string[];
   public task: string;
   public compTask: string[];
+  @ViewChild('inputTask') myInput  ;
 
   constructor(private taskService:TasksService) {
     this.tasks = this.taskService.getTasks();
-    this.task = "algo";
+    this.task = "Escribe una tarea"
+    this.ionViewLoaded()
   }
+
+  ionViewLoaded() {
+
+    setTimeout(() => {
+      this.myInput.setFocus();
+    },150);
+
+ }
 
   public addTask(){
     this.taskService.addTasks(this.task);
@@ -31,7 +43,6 @@ export class Tab1Page {
   public completeTask(pos:number){
     this.taskService.completeTask(pos);
     this.tasks=this.taskService.getCompTask();
-    console.log(this.taskService.getCompTask())
     this.taskService.removeTask(pos);
     this.tasks=this.taskService.getTasks();
  }
