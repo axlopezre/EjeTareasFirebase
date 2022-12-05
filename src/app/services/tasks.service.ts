@@ -23,11 +23,11 @@ export class TasksService {
      return this.firestore.collection('tasks').snapshotChanges().pipe(
        map(actions => {
          return actions.map(a => {
-           console.log(a);
+           //console.log(a);
            const data = a.payload.doc.data() as Tasks;
-           console.log(data);
+           //console.log(data);
            const id = a.payload.doc.id;
-           console.log(id);
+           //console.log(id);
            return { id, ...data };
          });
        })
@@ -38,41 +38,41 @@ export class TasksService {
     return this.firestore.collection('getcomptasks').snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
-          console.log(a);
+          //console.log(a);
           const data = a.payload.doc.data() as Tasks;
-          console.log(data);
+          //console.log(data);
           const id = a.payload.doc.id;
           return { id, ...data };
         });
       })
     );
    }
-
-  /*public addTasks(task: Tasks) {
-    console.log(task);
-    this.tasks.push(task);
-    return this.tasks;
-  }*/
-
   public addTasks(sponsor: Tasks) {
     return this.firestore.collection('tasks').add(sponsor);
   }
 
-   public removeTask(pos:number){
-      this.tasks.splice(pos, 1);
-   }
-
-   public completeTask(pos:number){
-      let taskslist = this.getTasks();
-      let deltask = taskslist[pos];
-     this.compTasks.push(deltask);
-   }
+  public addCompTasks(sponsor: Tasks) {
+    return this.firestore.collection('getcomptasks').add(sponsor);
+  }
+  public removeTask(id: string) {
+    this.firestore.collection('tasks').doc(id).delete();
+    return this.tasks;
+  }
+  public removecompTask(id: string) {
+    this.firestore.collection('getcomptasks').doc(id).delete();
+    return this.tasks;
+  }
    public removeCompTask(pos:number){
      this.compTasks.splice(pos, 1);
-   }
-   public completeTask2(pos:number){
-      let taskslist = this.getCompTask();
-      let deltask = taskslist[pos];
-      this.tasks.push(deltask);
-   }
+  }
+
+  public getTaskById(id: string) {
+    let result = this.firestore.collection('tasks').doc(id).valueChanges();
+    return result;
+  }
+
+  public getCompTaskById(id: string) {
+    let result = this.firestore.collection('getcomptasks').doc(id).valueChanges();
+    return result;
+  }
 }

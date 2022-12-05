@@ -6,8 +6,9 @@
     "\\src\\app\\models",
     "\\src\\app\\services",
     "\\src\\app\\tab1",
-    "\\src\\app\\tab2"
+    "\\src\\app\\tab2",
+    "\\src\\app\\tabs"
   ],
-  "SelectedNode": "\\src\\app\\tab1\\tab1.page.html",
+  "SelectedNode": "\\src\\app\\tab2\\tab2.page.html",
   "PreviewInSolutionExplorer": false
 }
